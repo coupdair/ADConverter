@@ -15,10 +15,10 @@
 #define AD7193_CH_6      6
 #define AD7193_CH_7      7
 
-#define CHANNEL AD7193_CH_1
-#define CHANNEL_NAME(CH) #CH
+#define CHANNEL AD7193_CH_3
 
-unsigned char currentPolarity = 0;// 0: differential or 1: unipolar mode
+#define AREF 3.3
+unsigned char currentPolarity = 1;// 0: differential or 1: unipolar mode
 unsigned char currentGain     = AD7193_CONF_GAIN_1;// AD7193_CONF_GAIN_1,...
 
 /*! Checks if the AD7139 part is present. */
@@ -286,50 +286,63 @@ void setup()
 {//setup
    unsigned long regValue = 0;
    Serial.begin(9600);
-   Serial.print("grab single channel:");
-   Serial.print(CHANNEL_NAME(CHANNEL));
-   Serial.print(".\n");
-   Serial.print("wait for ADC to wake up ...\n");
+   //information
+   Serial.print("#grab single channel: AD7193_CH_");
+   Serial.print(CHANNEL);
+   Serial.print("\n#setup in ");
+   if(!currentPolarity) Serial.print("differential"); else Serial.print("speudo-differential (i.e. unipolar)");
+   Serial.print(" mode.");
+   //! \todo currentGain
+   Serial.print("\n#with ");
+   Serial.print(AREF,2);
+   Serial.print(" volt reference.");
+   Serial.print("\n#wait for ADC to wake up ...\n");
    delay(15000);
   if(AD7193_Init())
   {
-      Serial.print("AD7193 OK");
+      Serial.print("#AD7193 OK");
   }
   else
   {
-      Serial.print("AD7193 Error");
+      Serial.print("#AD7193 Error");
       delay(2000);// wait a while
   }
   /*! Resets the device. */
     AD7193_Reset();
     Serial.print("\n");
-    Serial.print("reset OK");
+    Serial.print("#reset done");
     Serial.print("\n");
     /*! Select the channel. */
     AD7193_ChannelSelect(CHANNEL);
-    Serial.print("chanel OK");
+    Serial.print("#channel done");
     Serial.print("\n");
     /*! Calibrates the channel. */
     AD7193_Calibrate(AD7193_MODE_CAL_INT_ZERO, CHANNEL);
-    Serial.print("calibrate OK");
+    Serial.print("#calibrate done");
     Serial.print("\n");
     /*! Selects unipolar operation and ADC's input range to +-2.5V. */
     AD7193_RangeSetup(currentPolarity, currentGain);
-    Serial.print("range OK");
+    Serial.print("#range done");
     Serial.print("\n");
-    regValue = AD7193_GetRegisterValue(AD7193_REG_CONF, 3, 1);// 
-    regValue |= AD7193_CONF_PSEUDO;//
-    AD7193_SetRegisterValue(AD7193_REG_CONF, regValue, 3, 1);//
+    if(currentPolarity)
+    {
+      regValue = AD7193_GetRegisterValue(AD7193_REG_CONF, 3, 1);// 
+      regValue |= AD7193_CONF_PSEUDO;//
+      AD7193_SetRegisterValue(AD7193_REG_CONF, regValue, 3, 1);//
+      Serial.print("#CONF_PSEUDO done");
+      Serial.print("\n");
+   }//unipolar mode
+  Serial.print("value\tvolt\n");
     
 }//setup
 void loop()
 { 
   unsigned long data = 0;
   data = AD7193_ContinuousReadAvg(1000);//retur an average of 1000 convertion on selected channel
-  float volt=AD7193_ConvertToVolts(data,-3.3);// convert binary data to volt
-  Serial.print("value=");
+  float volt=AD7193_ConvertToVolts(data,-AREF);// convert binary data to volt
   Serial.print(data,DEC);// print the raw value of selected channel
-  Serial.print(", volt=");
+  Serial.print("\t");
   Serial.println(volt,DEC);// print the voltage of selected channel
   delay(1000);// wait a while
 }
+
