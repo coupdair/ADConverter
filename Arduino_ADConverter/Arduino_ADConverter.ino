@@ -14,10 +14,12 @@
 #define AD7193_CH_5      5
 #define AD7193_CH_6      6
 #define AD7193_CH_7      7
-#define AD7193_CH_8      8
 
-unsigned char currentPolarity = 1;// unipolar mode
-unsigned char currentGain     = 0;
+#define CHANNEL AD7193_CH_1
+#define CHANNEL_NAME(CH) #CH
+
+unsigned char currentPolarity = 0;// 0: differential or 1: unipolar mode
+unsigned char currentGain     = AD7193_CONF_GAIN_1;// AD7193_CONF_GAIN_1,...
 
 /*! Checks if the AD7139 part is present. */
 unsigned char AD7193_Init(void)
@@ -284,7 +286,11 @@ void setup()
 {//setup
    unsigned long regValue = 0;
    Serial.begin(9600);
-   delay(7000);
+   Serial.print("grab single channel:");
+   Serial.print(CHANNEL_NAME(CHANNEL));
+   Serial.print(".\n");
+   Serial.print("wait for ADC to wake up ...\n");
+   delay(15000);
   if(AD7193_Init())
   {
       Serial.print("AD7193 OK");
@@ -292,22 +298,23 @@ void setup()
   else
   {
       Serial.print("AD7193 Error");
+      delay(2000);// wait a while
   }
   /*! Resets the device. */
     AD7193_Reset();
     Serial.print("\n");
     Serial.print("reset OK");
     Serial.print("\n");
-    /*! Select Channel 0 */
-    AD7193_ChannelSelect(AD7193_CH_0);
+    /*! Select the channel. */
+    AD7193_ChannelSelect(CHANNEL);
     Serial.print("chanel OK");
     Serial.print("\n");
-    /*! Calibrates channel 0. */
-    AD7193_Calibrate(AD7193_MODE_CAL_INT_ZERO, AD7193_CH_0);
+    /*! Calibrates the channel. */
+    AD7193_Calibrate(AD7193_MODE_CAL_INT_ZERO, CHANNEL);
     Serial.print("calibrate OK");
     Serial.print("\n");
     /*! Selects unipolar operation and ADC's input range to +-2.5V. */
-    AD7193_RangeSetup(0, AD7193_CONF_GAIN_1);
+    AD7193_RangeSetup(currentPolarity, currentGain);
     Serial.print("range OK");
     Serial.print("\n");
     regValue = AD7193_GetRegisterValue(AD7193_REG_CONF, 3, 1);// 
@@ -319,9 +326,10 @@ void loop()
 { 
   unsigned long data = 0;
   data = AD7193_ContinuousReadAvg(1000);//retur an average of 1000 convertion on selected channel
-  float volt=AD7193_ConvertToVolts(data,-3.3);// convert binari data to volt
-  delay(1000);// wait a while
-  Serial.print("volt=");
+  float volt=AD7193_ConvertToVolts(data,-3.3);// convert binary data to volt
+  Serial.print("value=");
+  Serial.print(data,DEC);// print the raw value of selected channel
+  Serial.print(", volt=");
   Serial.println(volt,DEC);// print the voltage of selected channel
-
+  delay(1000);// wait a while
 }
