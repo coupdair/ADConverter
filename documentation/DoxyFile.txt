@@ -1597,9 +1597,9 @@ HIDE_UNDOC_RELATIONS   = YES
 # If you set the HAVE_DOT tag to YES then doxygen will assume the dot tool is
 # available from the path. This tool is part of Graphviz, a graph visualization
 # toolkit from AT&T and Lucent Bell Labs. The other options in this section
-# have no effect if this option is set to NO (the default)
+# have no effect if this option is set to NO (the default) -TODO-
 
-HAVE_DOT               = NO
+HAVE_DOT               = YES
 
 # The DOT_NUM_THREADS specifies the number of dot invocations doxygen is
 # allowed to run in parallel. When set to 0 (the default) doxygen will
@@ -1672,6 +1672,7 @@ TEMPLATE_RELATIONS     = NO
 # tags are set to YES then doxygen will generate a graph for each documented
 # file showing the direct and indirect include dependencies of the file with
 # other documented files.
+## sudo apt-get install graphviz
 
 INCLUDE_GRAPH          = YES
 
@@ -1686,17 +1687,17 @@ INCLUDED_BY_GRAPH      = YES
 # doxygen will generate a call dependency graph for every global function
 # or class method. Note that enabling this option will significantly increase
 # the time of a run. So in most cases it will be better to enable call graphs
-# for selected functions only using the \callgraph command.
+# for selected functions only using the \callgraph command. -TODO-
 
-CALL_GRAPH             = NO
+CALL_GRAPH             = YES
 
 # If the CALLER_GRAPH and HAVE_DOT tags are set to YES then
 # doxygen will generate a caller dependency graph for every global function
 # or class method. Note that enabling this option will significantly increase
 # the time of a run. So in most cases it will be better to enable caller
-# graphs for selected functions only using the \callergraph command.
+# graphs for selected functions only using the \callergraph command. -TODO-
 
-CALLER_GRAPH           = NO
+CALLER_GRAPH           = YES
 
 # If the GRAPHICAL_HIERARCHY and HAVE_DOT tags are set to YES then doxygen
 # will generate a graphical hierarchy of all classes instead of a textual one.
