@@ -52,7 +52,7 @@ PROJECT_LOGO           =
 # If a relative path is entered, it will be relative to the location
 # where doxygen was started. If left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       =
+OUTPUT_DIRECTORY       = ./
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create
 # 4096 sub-directories (in 2 levels) under the output directory of each output
@@ -353,9 +353,9 @@ LOOKUP_CACHE_SIZE      = 0
 # If the EXTRACT_ALL tag is set to YES doxygen will assume all entities in
 # documentation are documented, even if no documentation was available.
 # Private class members and static file members will be hidden unless
-# the EXTRACT_PRIVATE and EXTRACT_STATIC tags are set to YES
+# the EXTRACT_PRIVATE and EXTRACT_STATIC tags are set to YES -TODO-
 
-EXTRACT_ALL            = NO
+EXTRACT_ALL            = YES
 
 # If the EXTRACT_PRIVATE tag is set to YES all private members of a class
 # will be included in the documentation.
@@ -653,9 +653,9 @@ WARN_LOGFILE           =
 # The INPUT tag can be used to specify the files and/or directories that contain
 # documented source files. You may enter file names like "myfile.cpp" or
 # directories like "/usr/src/myproject". Separate the files or directories
-# with spaces.
+# with spaces. -TODO-
 
-INPUT                  =
+INPUT                  = ../AD7193 ../Arduino_ADConverter ../ArduinoDUE_ADConverter ../MX3cK_ADConverter
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding, which is
@@ -671,15 +671,15 @@ INPUT_ENCODING         = UTF-8
 # blank the following patterns are tested:
 # *.c *.cc *.cxx *.cpp *.c++ *.d *.java *.ii *.ixx *.ipp *.i++ *.inl *.h *.hh
 # *.hxx *.hpp *.h++ *.idl *.odl *.cs *.php *.php3 *.inc *.m *.mm *.dox *.py
-# *.f90 *.f *.for *.vhd *.vhdl
+# *.f90 *.f *.for *.vhd *.vhdl -TODO-
 
-FILE_PATTERNS          =
+FILE_PATTERNS          = *.c *.cc *.cxx *.cpp *.c++ *.h *.hh *.hxx *.hpp *.h++ *.ino *.pde
 
 # The RECURSIVE tag can be used to turn specify whether or not subdirectories
 # should be searched for input files as well. Possible values are YES and NO.
-# If left blank NO is used.
+# If left blank NO is used. -TODO-
 
-RECURSIVE              = NO
+RECURSIVE              = YES
 
 # The EXCLUDE tag can be used to specify files and/or directories that should be
 # excluded from the INPUT source files. This way you can easily exclude a
@@ -713,7 +713,7 @@ EXCLUDE_SYMBOLS        =
 
 # The EXAMPLE_PATH tag can be used to specify one or more files or
 # directories that contain example code fragments that are included (see
-# the \include command).
+# the \include command). -TODO-
 
 EXAMPLE_PATH           =
 
@@ -733,7 +733,7 @@ EXAMPLE_RECURSIVE      = NO
 
 # The IMAGE_PATH tag can be used to specify one or more files or
 # directories that contain image that are included in the documentation (see
-# the \image command).
+# the \image command). -TODO-
 
 IMAGE_PATH             =
 
@@ -780,9 +780,9 @@ FILTER_SOURCE_PATTERNS =
 # If the SOURCE_BROWSER tag is set to YES then a list of source files will
 # be generated. Documented entities will be cross-referenced with these sources.
 # Note: To get rid of all source code in the generated output, make sure also
-# VERBATIM_HEADERS is set to NO.
+# VERBATIM_HEADERS is set to NO. -TODO-
 
-SOURCE_BROWSER         = NO
+SOURCE_BROWSER         = YES
 
 # Setting the INLINE_SOURCES tag to YES will include the body
 # of functions and classes directly in the documentation.
@@ -791,21 +791,21 @@ INLINE_SOURCES         = NO
 
 # Setting the STRIP_CODE_COMMENTS tag to YES (the default) will instruct
 # doxygen to hide any special comment blocks from generated source code
-# fragments. Normal C, C++ and Fortran comments will always remain visible.
+# fragments. Normal C, C++ and Fortran comments will always remain visible. -TODO-
 
 STRIP_CODE_COMMENTS    = YES
 
 # If the REFERENCED_BY_RELATION tag is set to YES
 # then for each documented function all documented
-# functions referencing it will be listed.
+# functions referencing it will be listed. -TODO-
 
-REFERENCED_BY_RELATION = NO
+REFERENCED_BY_RELATION = YES
 
 # If the REFERENCES_RELATION tag is set to YES
 # then for each documented function all documented entities
-# called/used by that function will be listed.
+# called/used by that function will be listed. -TODO-
 
-REFERENCES_RELATION    = NO
+REFERENCES_RELATION    = YES
 
 # If the REFERENCES_LINK_SOURCE tag is set to YES (the default)
 # and SOURCE_BROWSER tag is set to YES, then the hyperlinks from

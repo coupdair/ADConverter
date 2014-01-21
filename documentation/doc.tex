@@ -581,7 +581,10 @@ unsigned char currentGain     = 0;
 doxygen
 \begin{lstlisting}
 #init doc w dox
-doxygen -g DoxyFile.txt ../AD7193 ../Arduino* ../MX3cK_ADConverter
+doxygen -g DoxyFile.txt
+##tune file with:
+##INPUT                  = ../AD7193 ../Arduino* ../MX3cK_ADConverter
+
 #gen doc w dox
 doxygen DoxyFile.txt
 \end{lstlisting}
