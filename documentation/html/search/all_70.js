@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['pmod1_5fcs_5fhigh',['PMOD1_CS_HIGH',['../Arduino__ADConverter_8ino.html#a63e3737e781322ea27560ba6e9e2c15f',1,'PMOD1_CS_HIGH():&#160;Arduino_ADConverter.ino'],['../ArduinoDUE__ADConverter_8ino.html#a63e3737e781322ea27560ba6e9e2c15f',1,'PMOD1_CS_HIGH():&#160;ArduinoDUE_ADConverter.ino'],['../MX3cK__ADConverter_8pde.html#a63e3737e781322ea27560ba6e9e2c15f',1,'PMOD1_CS_HIGH():&#160;MX3cK_ADConverter.pde']]],
+  ['pmod1_5fcs_5flow',['PMOD1_CS_LOW',['../Arduino__ADConverter_8ino.html#a5877d0e36644d994ac83e1f6857913ec',1,'PMOD1_CS_LOW():&#160;Arduino_ADConverter.ino'],['../ArduinoDUE__ADConverter_8ino.html#a5877d0e36644d994ac83e1f6857913ec',1,'PMOD1_CS_LOW():&#160;ArduinoDUE_ADConverter.ino'],['../MX3cK__ADConverter_8pde.html#a5877d0e36644d994ac83e1f6857913ec',1,'PMOD1_CS_LOW():&#160;MX3cK_ADConverter.pde']]],
+  ['pmod1_5fcs_5fpin',['PMOD1_CS_PIN',['../Arduino__ADConverter_8ino.html#a17f1f3c6c64f389bfac4d86ebe4e257b',1,'PMOD1_CS_PIN():&#160;Arduino_ADConverter.ino'],['../ArduinoDUE__ADConverter_8ino.html#a17f1f3c6c64f389bfac4d86ebe4e257b',1,'PMOD1_CS_PIN():&#160;ArduinoDUE_ADConverter.ino'],['../MX3cK__ADConverter_8pde.html#a17f1f3c6c64f389bfac4d86ebe4e257b',1,'PMOD1_CS_PIN():&#160;MX3cK_ADConverter.pde']]]
+];
