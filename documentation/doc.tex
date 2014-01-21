@@ -19,6 +19,7 @@
 \usepackage{xcolor}
 \usepackage{listings}
 \graphicspath{{img/}}
+\usepackage{verbatim}
 
 
 \title{ADConverter\\$\mid$\\$ADConverter$: an open project for\\analog to
@@ -550,7 +551,7 @@ void loop()
 \begin{itemize}
 \item $link$ (shell; \textbf{done})
 \textit{or}
-\item $include "../AD7193/AD7193.h"$ (C/C++; \textbf{todo ?})
+\item $\#include$ $"../AD7193/AD7193.h"$ (C/C++; \textbf{todo ?})
 \end{itemize}
 
 \paragraph*{gather code:}
@@ -566,7 +567,7 @@ void AD7193_SetRegisterValue(unsigned char registerAddress,
 \end{lstlisting}
 \textbf{to} design
 \begin{itemize}
-\item header (C) with $\#ifdef DEVICE$
+\item header (C) with $\#ifdef$ $DEVICE$
 \textit{or}
 \item class (C++) -inheritance: $base_device->arduino_device->...$ -
 \end{itemize}
@@ -608,6 +609,10 @@ firefox html/index.html &
 
 \end{lstlisting}
 
-add doxygen comment for functions, i.e. $//! short description$.
+add doxygen comment for functions, i.e. $//!$ $short description$.
+
+\subsection{code tree}
+$tree$ $-d$ $../$
+\verbatiminput{tree.txt}
 
 \end{document}
