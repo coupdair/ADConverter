@@ -565,8 +565,8 @@ void AD7193_SetRegisterValue(unsigned char registerAddress,
 \end{lstlisting}
 design
 \begin{itemize}
-\item header (C) with $\#ifdef$
-\item class (C++) -inheritance-
+\item header (C) with $\#ifdef DEVICE$
+\item class (C++) -inheritance: $base_device->arduino_device->...$ -
 \end{itemize}
 
 \item global variables to local (C) or class member (C++):
@@ -576,5 +576,15 @@ unsigned char currentGain     = 0;
 \end{lstlisting}
 
 \end{itemize}//gather
+
+\subsection{code documentation enhancement}
+doxygen
+\begin{lstlisting}
+#init doc w dox
+doxygen -g DoxyFile.txt ../AD7193 ../Arduino* ../MX3cK_ADConverter
+#gen doc w dox
+doxygen DoxyFile.txt
+\end{lstlisting}
+
 
 \end{document}
