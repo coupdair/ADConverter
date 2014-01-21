@@ -545,4 +545,31 @@ void loop()
 }
 \end{lstlisting}
 
+\subsection{code enhancement}
+\paragraph*{single file:}
+\begin{itemize}
+\item link (\textbf{done})
+\item include "../" (\textbf{todo ?})
+\end{itemize}
+
+\paragraph*{gather code:}
+\begin{itemize}
+\item same functions in all device directory:
+\begin{lstlisting}
+unsigned char AD7193_Init(void)
+void AD7193_SetRegisterValue(unsigned char registerAddress,
+                              unsigned long registerValue,
+                              unsigned char bytesNumber,
+                              unsigned char modifyCS)
+...
+\end{lstlisting}
+
+\item global variables to local (C) or class member (C++):
+\begin{lstlisting}
+unsigned char currentPolarity = 1;
+unsigned char currentGain     = 0;
+\end{lstlisting}
+
+\end{itemize}//gather
+
 \end{document}
