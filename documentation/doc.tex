@@ -548,13 +548,14 @@ void loop()
 \subsection{code enhancement}
 \paragraph*{single file:}
 \begin{itemize}
-\item $link$ (\textbf{done})
-\item $include "../AD7193/AD7193.h"$ (\textbf{todo ?})
+\item $link$ (shell; \textbf{done})
+\textit{or}
+\item $include "../AD7193/AD7193.h"$ (C/C++; \textbf{todo ?})
 \end{itemize}
 
 \paragraph*{gather code:}
 \begin{itemize}
-\item same functions in all device directory:
+\item same functions in all device directories:
 \begin{lstlisting}
 unsigned char AD7193_Init(void)
 void AD7193_SetRegisterValue(unsigned char registerAddress,
@@ -563,18 +564,24 @@ void AD7193_SetRegisterValue(unsigned char registerAddress,
                               unsigned char modifyCS)
 ...
 \end{lstlisting}
-design
+\textbf{to} design
 \begin{itemize}
 \item header (C) with $\#ifdef DEVICE$
+\textit{or}
 \item class (C++) -inheritance: $base_device->arduino_device->...$ -
 \end{itemize}
 
-\item global variables to local (C) or class member (C++):
+\item global variables:
 \begin{lstlisting}
 unsigned char currentPolarity = 1;
 unsigned char currentGain     = 0;
 \end{lstlisting}
-
+\textbf{to} local (C) or class member (C++)
+\begin{itemize}
+\item local (C)
+\textit{or}
+\item class member (C++)
+\end{itemize}
 \end{itemize}//gather
 
 \subsection{code documentation enhancement}
@@ -584,10 +591,23 @@ doxygen
 doxygen -g DoxyFile.txt
 ##tune file with:
 ##INPUT                  = ../AD7193 ../Arduino* ../MX3cK_ADConverter
+##FILE_PATTERNS          = *.c *.cpp *.h *.hpp
+##EXTRACT_ALL            = YES
+##SOURCE_BROWSER         = YES
+##STRIP_FROM_PATH        = ../
+##HAVE_DOT               = YES ## sudo apt-get install graphviz
+##REFERENCED_BY_RELATION = YES
+##REFERENCES_RELATION    = YES
+## ...
 
-#gen doc w dox
+#generate documentation with doxygen
 doxygen DoxyFile.txt
+
+#browse it
+firefox html/index.html &
+
 \end{lstlisting}
 
+add doxygen comment for functions, i.e. $//! short description$.
 
 \end{document}
