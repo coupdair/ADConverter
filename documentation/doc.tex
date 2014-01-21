@@ -548,8 +548,8 @@ void loop()
 \subsection{code enhancement}
 \paragraph*{single file:}
 \begin{itemize}
-\item link (\textbf{done})
-\item include "../" (\textbf{todo ?})
+\item $link$ (\textbf{done})
+\item $include "../AD7193/AD7193.h"$ (\textbf{todo ?})
 \end{itemize}
 
 \paragraph*{gather code:}
@@ -563,6 +563,11 @@ void AD7193_SetRegisterValue(unsigned char registerAddress,
                               unsigned char modifyCS)
 ...
 \end{lstlisting}
+design
+\begin{itemize}
+\item header (C) with $\#ifdef$
+\item class (C++) -inheritance-
+\end{itemize}
 
 \item global variables to local (C) or class member (C++):
 \begin{lstlisting}
